@@ -1,6 +1,15 @@
 # AQA-Population-Model
 Computer Science GCSE Coursework
 
+# About the model
+When studying the environment, scientists sometimes look at how population sizes of animals and plants change overtime. The scientists can use this information to find out which species are in danger of becoming extinct, to predict the effect of introducing a foreign species of animal into the countryside or to discover the effect of a pollutant.
+
+Studying populations of animals and plants in the wild can take a very long time, so scientists use computer models to help them in their studies.
+
+This population model has been made to investigate how a greenfly population changes. Greenflies are a common insect that are considered to be a pest by gardeners because they damage roses and other garden plants.
+
+The life cycle of greenfly is complex and the model will only deal with some aspects of the greenfly life cycle. In the summer, the population consists only of females and each female gives birth to only females.
+
 # The Population Model Rules
 1. The population consists only of females
 
