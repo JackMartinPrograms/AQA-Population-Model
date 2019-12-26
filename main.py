@@ -50,11 +50,16 @@ def setValues():
         survNumSen = float(input("Set the survival rate for Seniles: "))
 
         birthRate = float(input("Set the birth rate: "))
-        generationsToModel = int(input("Set the number of generations to model: "))
+        generationsToModel = int(input("Set the number of generations to model (Between 5 and 25): "))
+
+        if generationsToModel < 5 && generationsToModel > 25:
+            print("\nThe number of generations must be between 5 and 25!")
+            generationsToModel = int(input("Set the number of generations to model: "))
+
         mainMenu()
     except Exception:
         print("Failed to set values!")
-        print("Returning to main menu...")
+        print("Returning to main menu...\n")
         mainMenu()
 
 #Display values function
