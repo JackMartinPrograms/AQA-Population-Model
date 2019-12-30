@@ -8,12 +8,15 @@ popNumJuv = 10
 popNumAdults = 10
 popNumSen = 10
 
+#Default survival rate values
 survNumJuv = 1
 survNumAdults = 1
 survNumSen = 0
 
+#Default birth rate, number of generations to model and total population values
 birthRate = 2
 generationsToModel = 5
+total = 0
 
 #Main menu function
 def mainMenu():
@@ -79,6 +82,7 @@ def displayValues():
         mainMenu()
     except Exception:
         print("FAILED!")
+        mainMenu()
 
 #Run model function
 def runModel():
@@ -87,28 +91,39 @@ def runModel():
     global birthRate
     print("\n")
 
+    #Generation 0 total population count
     total = popNumJuv + popNumAdults + popNumSen
 
+    #The starting point for the model
     firstPart = "GEN: 0" + "  |  " + "JUVINILE: " + str(popNumJuv) + "  |  " + "ADULT: " + str(popNumAdults)
     print(firstPart + "  |  " + "SENILE: " + str(popNumSen) + "  |  " + "TOTAL: " + str(total))
 
-    time.sleep(1) #This time.sleep is not essential, I added it in to give the model a certain look to it
+    time.sleep(1) #This is not essential, I added it in to give the model a certain look to it
 
-    for i in range(generationsToModel):
-        newJuv = popNumAdults * birthRate
-        newAdults = popNumJuv * survNumJuv
-        newSen = (popNumAdults * survNumAdults) + (popNumSen * survNumSen)
+    #Try to run the model for X generations
+    try:
+        for i in range(generationsToModel):
+            #Formula for calculating the population of greenfly
+            newJuv = popNumAdults * birthRate
+            newAdults = popNumJuv * survNumJuv
+            newSen = (popNumAdults * survNumAdults) + (popNumSen * survNumSen)
 
-        popNumJuv = newJuv
-        popNumAdults = newAdults
-        popNumSen = newSen
+            #Setting the original values to the new values
+            popNumJuv = newJuv
+            popNumAdults = newAdults
+            popNumSen = newSen
 
-        total = popNumJuv + popNumAdults + popNumSen
+            #Calculating the total number of greenfly
+            total = popNumJuv + popNumAdults + popNumSen
 
-        firstPart = "GEN: " + str(i + 1) + "  |  " + "JUVINILE: " + str(popNumJuv) + "  |  "
+            #I split these up because it was a very long line of code
+            firstPart = "GEN: " + str(i + 1) + "  |  " + "JUVINILE: " + str(popNumJuv) + "  |  "
+            print(firstPart + "ADULT: " + str(popNumAdults) + "  |  " + "SENILE: " + str(popNumSen) + "  |  " + "TOTAL: " + str(total))
 
-        print(firstPart + "ADULT: " + str(popNumAdults) + "  |  " + "SENILE: " + str(popNumSen) + "  |  " + "TOTAL: " + str(total))
-        time.sleep(1) #This time.sleep is not essential, I added it in to give the model a certain look to it
+            time.sleep(1) #This is not essential, I added it in to give running the model a certain look to it
+    except Exception:
+        print("ERROR! Could not run model.")
+        mainMenu()
 
 #Main method that starts the program
 if __name__ == "__main__":
