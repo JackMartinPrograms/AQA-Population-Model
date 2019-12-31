@@ -55,7 +55,7 @@ def setValues():
         birthRate = float(input("Set the birth rate: "))
         generationsToModel = int(input("Set the number of generations to model (Between 5 and 25): "))
 
-        if generationsToModel < 5 && generationsToModel > 25:
+        if generationsToModel < 5 and generationsToModel > 25:
             print("\nThe number of generations must be between 5 and 25!")
             generationsToModel = int(input("Set the number of generations to model: "))
 
